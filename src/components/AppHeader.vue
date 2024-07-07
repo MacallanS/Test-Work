@@ -45,6 +45,7 @@
               id="mobile-search-input"
               class="header__mobile-search-input"
               ref="mobileSearchInput"
+              placeholder="Запрос"
             />
             <button class="header__mobile-search-clear-btn" @click="clearMobileSearch">
               <img
