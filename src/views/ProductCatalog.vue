@@ -93,7 +93,7 @@ export default {
   .product-catalog {
     &__mobil-wrapper {
       display: block;
-      width: 70vw;
+      width: 80vw;
       margin: 0 auto;
       padding: 10px;
     }

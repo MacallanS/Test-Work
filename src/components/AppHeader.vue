@@ -158,7 +158,7 @@ export default {
 
   &__mobile-wrapper {
     display: none;
-    width: 70vw;
+    width: 80vw;
     margin: 0 auto;
     padding: 10px;
   }
