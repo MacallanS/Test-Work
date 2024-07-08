@@ -17,7 +17,6 @@
   </div>
 </template>
 
-
 <script>
 import FilterSidebar from '../components/FilterSidebar.vue';
 import ProductList from '../components/ProductList.vue';

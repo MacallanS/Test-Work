@@ -2,48 +2,72 @@
   <div class="product-item">
     <div class="product-item__image-container">
       <p class="product-item__discount-text">
-        Хит продаж 
-        <img :src="fireIcon" alt="Fire Icon" class="product-item__discount-icon">
+        Хит продаж
+        <img
+          :src="fireIcon"
+          alt="Fire Icon"
+          class="product-item__discount-icon"
+        />
       </p>
-      <img :src="require('@/assets/box.svg')" alt="Product Image" class="product-item__image" />
+      <img
+        :src="require('@/assets/box.svg')"
+        alt="Product Image"
+        class="product-item__image"
+      />
       <p class="product-item__discount-info">{{ product.discount }}%</p>
     </div>
     <div class="product-item__details">
       <p class="product-item__info">Бренд</p>
       <p class="product-item__name">{{ truncatedName }}</p>
       <div v-if="product.isAvailable" class="product-item__price-info">
-        <p class="product-item__discounted-price">{{ formattedDiscountedPrice }}</p>
-        <p v-if="product.discount > 0" class="product-item__original-price">{{ formattedOriginalPrice }}</p>
+        <p class="product-item__discounted-price">
+          {{ formattedDiscountedPrice }}
+        </p>
+        <p v-if="product.discount > 0" class="product-item__original-price">
+          {{ formattedOriginalPrice }}
+        </p>
       </div>
       <div v-else class="product-item__notify">
         <p>Сообщить о поступлении</p>
       </div>
-      <button class="product-item__buy-button" v-if="product.isAvailable && product.price !== null">Купить</button>
+      <button
+        class="product-item__buy-button"
+        v-if="product.isAvailable && product.price !== null"
+      >
+        Купить
+      </button>
     </div>
   </div>
 </template>
 
 <script>
-import fireIcon from '@/assets/fire.svg'; 
+import fireIcon from "@/assets/fire.svg";
 
 export default {
-  name: 'ProductItem',
+  name: "ProductItem",
   props: {
-    product: Object
+    product: Object,
   },
   computed: {
     truncatedName() {
       const maxLength = 30;
       if (this.product.name.length > maxLength) {
-        return this.product.name.slice(0, maxLength) + '...';
+        return this.product.name.slice(0, maxLength) + "...";
       }
       return this.product.name;
     },
     formattedOriginalPrice() {
-      if (this.product.price === null || this.product.discount === null || this.product.discount === 0) {
+      if (
+        this.product.price === null ||
+        this.product.discount === null ||
+        this.product.discount === 0
+      ) {
         return null;
       }
-      const originalPrice = (this.product.price / (1 - (this.product.discount / 100))).toFixed(2);
+      const originalPrice = (
+        this.product.price /
+        (1 - this.product.discount / 100)
+      ).toFixed(2);
       return `${originalPrice} ₽`;
     },
     formattedDiscountedPrice() {
@@ -51,13 +75,13 @@ export default {
         return null;
       }
       return `${this.product.price.toFixed(2)} ₽`;
-    }
+    },
   },
   data() {
     return {
-      fireIcon
+      fireIcon,
     };
-  }
+  },
 };
 </script>
 
@@ -69,14 +93,14 @@ export default {
   padding: 10px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   min-height: 370px;
-  
+
   &:hover {
     transform: scale(1.02);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 
   &__info {
-    color: #AAAAAA;
+    color: #aaaaaa;
     font-size: 14px;
     margin-bottom: 10px;
   }
@@ -88,7 +112,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #F8F8FA;
+    background-color: #f8f8fa;
   }
 
   &__discount-text {
@@ -120,7 +144,7 @@ export default {
     position: absolute;
     bottom: 10px;
     left: 10px;
-    background-color: #7397F5;
+    background-color: #7397f5;
     padding: 7px;
     border-radius: 4px;
     font-size: 14px;
@@ -174,18 +198,17 @@ export default {
   &__buy-button {
     padding: 10px 20px;
     background-color: white;
-    color: #7397F5;
+    color: #7397f5;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 14px;
-    border: 1px solid #7397F5;
+    border: 1px solid #7397f5;
 
     &:hover {
-      background-color: #7397F5;
+      background-color: #7397f5;
       color: white;
     }
   }
 }
-
 </style>
