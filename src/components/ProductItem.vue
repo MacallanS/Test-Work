@@ -23,8 +23,6 @@
   </div>
 </template>
 
-
-
 <script>
 import fireIcon from '@/assets/fire.svg'; 
 
