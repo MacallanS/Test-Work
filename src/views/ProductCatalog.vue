@@ -18,23 +18,23 @@
 </template>
 
 <script>
-import FilterSidebar from '../components/FilterSidebar.vue';
-import ProductList from '../components/ProductList.vue';
-import productsData from '../assets/products.json'; 
+import FilterSidebar from "../components/FilterSidebar.vue";
+import ProductList from "../components/ProductList.vue";
+import productsData from "../assets/products.json";
 
 export default {
-  name: 'ProductCatalog',
+  name: "ProductCatalog",
   components: {
     FilterSidebar,
-    ProductList
+    ProductList,
   },
   data() {
     return {
       filters: {
-        priceRange: [0, 10000]
+        priceRange: [0, 10000],
       },
       products: [],
-      filteredProducts: []
+      filteredProducts: [],
     };
   },
   methods: {
@@ -43,21 +43,23 @@ export default {
       this.filterProducts();
     },
     filterProducts() {
-      this.filteredProducts = this.products.filter(product => {
+      this.filteredProducts = this.products.filter((product) => {
         return (
           product.price >= this.filters.priceRange[0] &&
           product.price <= this.filters.priceRange[1]
         );
       });
-    }
+    },
   },
   created() {
-    this.products = productsData.map(product => ({
+    this.products = productsData.map((product) => ({
       ...product,
-      price: product.isAvailable ? (product.price * (1 - 0.25)) : null 
+      price: product.isAvailable
+        ? product.price / (1 - product.discount / 100)
+        : null,
     }));
     this.filterProducts();
-  }
+  },
 };
 </script>
 
@@ -72,9 +74,9 @@ export default {
 
   &__wrapper {
     display: flex;
-    width: 1720px; 
+    width: 1720px;
     @media (max-width: 1920px) {
-      width: calc(100% - 240px); 
+      width: calc(100% - 240px);
     }
   }
 
@@ -113,4 +115,3 @@ export default {
   }
 }
 </style>
-

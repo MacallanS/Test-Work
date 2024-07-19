@@ -11,7 +11,7 @@
     "name": "Полное название товара в несколько строк для вида с обрывом в конце...",
     "price": 2990,
     "discount": 25,
-    "isAvailable": false
+    "isAvailable": true
   },
   {
     "id": 3,
